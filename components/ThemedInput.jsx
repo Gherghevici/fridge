@@ -1,11 +1,13 @@
-import {StyleSheet, TextInput,useColorScheme } from "react-native"
+import {StyleSheet, TextInput,useColorScheme,Text,View } from "react-native"
 import { Colors } from "../constants/Colors"
 
-const ThemedInput = ({style,placeholder,type,changeHandler,blurHandler,...props})=>{
+const ThemedInput = ({style,placeholder,type,changeHandler,blurHandler,errors,...props})=>{
     const colorScheme = useColorScheme();
     const theme = Colors[colorScheme] ?? Colors.light;
 
     return(
+      <>
+      
         <TextInput 
             inputMode={type}
             
@@ -15,6 +17,12 @@ const ThemedInput = ({style,placeholder,type,changeHandler,blurHandler,...props}
 
             {...props}
         />
+        { errors && (
+                    <Text style={{ color: Colors.warning,width:250,textAlign:"center" }}>
+                        {errors}
+                    </Text>
+        )}
+      </>
     )
 }
 
@@ -23,8 +31,8 @@ export default ThemedInput
 const styles = StyleSheet.create({
   input: {
    
-    paddingHorizontal:"10",
-    paddingVertical:"6",
+    paddingHorizontal:"12",
+    paddingVertical:"10",
     width:"250",
     borderRadius:10,
   },

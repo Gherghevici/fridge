@@ -4,32 +4,29 @@ import { Link } from 'expo-router';
 
 import { Colors } from "../../constants/Colors";
 
-import { checkEmailFormat,checkPasswordFormat,submitHandler,ChangeFieldHandler,blurFieldHandler } from "../../utils/Functions";
-
 import ThemedView from "../../components/ThemedView";
 import ThemedButton from "../../components/ThemedButton";
 import ThemedText from "../../components/ThemedText";
 import ThemedInput from "../../components/ThemedInput";
 
-const Login=()=>{
+import { submitHandler,ChangeFieldHandler,blurFieldHandler } from "../../utils/Functions";
+
+const PasswordForgot = ()=>{
+
     const colorScheme = useColorScheme();
     const theme = Colors[colorScheme] ?? Colors.light;
-    
+
     const [form, setForm] = useState({
         email: "",
-        password: ""
     });
-
     const [errors, setErrors] = useState({
         email: null,
-        password: null
     });
-
-
+    
     return(
         <ThemedView style={{justifyContent:"center"}}>
             <View style={{backgroundColor:theme.navBackground,padding:20,borderRadius:10,gap:10}}>
-                <ThemedText style={{alignSelf:"center",fontSize:"24",}}>Login page</ThemedText>
+                <ThemedText style={{alignSelf:"center",fontSize:"24",}}>Password Reset</ThemedText>
                 <ThemedInput
                     placeholder={"Email"}
                     inputMode={"email"}
@@ -39,21 +36,11 @@ const Login=()=>{
                     style={errors.email&&{borderWidth:1, borderColor:"red"}}
                     errors={errors.email}
                 />
-               
-                <ThemedInput
-                    placeholder={"Password"}
-                    typeKeyboard={"text"}
-                    secureTextEntry
-                    onChangeText={(t) => ChangeFieldHandler("password",t,setForm,setErrors)}
-                    onBlur={() => blurFieldHandler("password", form.password,setErrors)}
-                    style={errors.password&&{borderWidth:1, borderColor:"red"}}
-                    errors={errors.password}
-                />
-                <Link href={"/passwordForgot"} ><ThemedText style={[{textAlign:"right",fontSize:14}]}>Forgot your password?</ThemedText></Link>
-                
-                <ThemedButton style={{width:"120",alignSelf:"center"}} onPress={()=>submitHandler(setErrors,form.email,form.password)}><ThemedText>Login</ThemedText></ThemedButton>
+                <ThemedButton style={{width:"130",alignSelf:"center"}} onPress={()=>submitHandler(setErrors,form.email)}><ThemedText>Send Email</ThemedText></ThemedButton>
             </View>
         </ThemedView>
     )
+
 }
-export default Login
+
+export default PasswordForgot;

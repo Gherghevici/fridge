@@ -1,35 +1,47 @@
-import { View,Text,TextInput,useColorScheme } from "react-native"
-import { useState } from "react"
-import { Link } from 'expo-router';
+import {View,TextInput,useColorScheme} from 'react-native'
+
+import {useState} from 'react'
 
 import { Colors } from "../../constants/Colors";
-
-import { checkEmailFormat,checkPasswordFormat,submitHandler,ChangeFieldHandler,blurFieldHandler } from "../../utils/Functions";
 
 import ThemedView from "../../components/ThemedView";
 import ThemedButton from "../../components/ThemedButton";
 import ThemedText from "../../components/ThemedText";
 import ThemedInput from "../../components/ThemedInput";
 
-const Login=()=>{
+import { submitHandler,ChangeFieldHandler,blurFieldHandler } from "../../utils/Functions";
+
+
+const Register = () =>{
+
     const colorScheme = useColorScheme();
     const theme = Colors[colorScheme] ?? Colors.light;
-    
     const [form, setForm] = useState({
-        email: "",
-        password: ""
-    });
-
+            email: "",
+            password: "",
+            name:"",
+        });
+    
     const [errors, setErrors] = useState({
-        email: null,
-        password: null
+            email: null,
+            password: null,
+            name:null,
     });
-
+    
+    
 
     return(
         <ThemedView style={{justifyContent:"center"}}>
             <View style={{backgroundColor:theme.navBackground,padding:20,borderRadius:10,gap:10}}>
-                <ThemedText style={{alignSelf:"center",fontSize:"24",}}>Login page</ThemedText>
+                <ThemedText style={{alignSelf:"center",fontSize:"24",}}>Register page</ThemedText>
+                <ThemedInput
+                    placeholder={"Name"}
+                    typeKeyboard={"text"}
+                    onChangeText={(t) => ChangeFieldHandler("name",t,setForm,setErrors)}
+                    onBlur={() => blurFieldHandler("name", form.name,setErrors)}
+                    style={errors.name&&{borderWidth:1, borderColor:"red"}}
+                    errors={errors.name}
+                />
                 <ThemedInput
                     placeholder={"Email"}
                     inputMode={"email"}
@@ -49,11 +61,12 @@ const Login=()=>{
                     style={errors.password&&{borderWidth:1, borderColor:"red"}}
                     errors={errors.password}
                 />
-                <Link href={"/passwordForgot"} ><ThemedText style={[{textAlign:"right",fontSize:14}]}>Forgot your password?</ThemedText></Link>
                 
-                <ThemedButton style={{width:"120",alignSelf:"center"}} onPress={()=>submitHandler(setErrors,form.email,form.password)}><ThemedText>Login</ThemedText></ThemedButton>
+                <ThemedButton style={{width:"120",alignSelf:"center"}} onPress={()=>submitHandler(setErrors,form.email,form.password,form.name)}><ThemedText>Register</ThemedText></ThemedButton>
             </View>
         </ThemedView>
     )
 }
-export default Login
+
+export default Register;
+

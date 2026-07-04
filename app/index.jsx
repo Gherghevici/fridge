@@ -25,6 +25,11 @@ const Home = () => {
                 <ThemedText>Register</ThemedText>
               </ThemedButton>
             </Link>
+            <Link href="/profilePage" asChild>
+              <ThemedButton style={{width:"120"}}>
+                <ThemedText>main</ThemedText>
+              </ThemedButton>
+            </Link>
         </ThemedView>
     )
 }
