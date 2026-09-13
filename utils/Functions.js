@@ -21,6 +21,7 @@ export const submitHandler = (setErrors,email,pass,name)=>{
         newErrors.password = "Parola trebuie sa contina o litera mare, o litera mica, o cifra si sa fie diemnsiunea 8 cel putin";
         
     if (Object.keys(newErrors).length > 0) {
+        
         setErrors(newErrors);
         return;
     }

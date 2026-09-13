@@ -17,7 +17,7 @@ export default ThemedButton
 
 const styles = StyleSheet.create({
   btn:{
-        backgroundColor:Colors.primary,
+        backgroundColor:Colors.primary.T30,
         paddingHorizontal:"20",
         paddingVertical:"8",
         borderRadius:10,
