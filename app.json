@@ -5,7 +5,7 @@
       "typedRoutes": true
     },
     "web": {
-      "bundler": "metro"
+      "favicon": "./assets/favicon.png"
     },
     "name": "fridge",
     "slug": "fridge",
@@ -13,12 +13,6 @@
     "orientation": "portrait",
     "icon": "",
     "userInterfaceStyle": "light",
-    "newArchEnabled": true,
-    "splash": {
-      "image": "",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
     "ios": {
       "supportsTablet": true
     },
@@ -27,10 +21,7 @@
         "foregroundImage": "",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
+      "package": "com.kapacioc20.fridge"
     },
     "plugins": [
       "expo-router"
